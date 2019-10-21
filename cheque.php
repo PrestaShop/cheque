@@ -64,7 +64,7 @@ class Cheque extends PaymentModule
 
 		if ((!isset($this->chequeName) || !isset($this->address) || empty($this->chequeName) || empty($this->address)))
 			$this->warning = $this->l('The "Pay to the order of" and "Address" fields must be configured before using this module.');
-		if (!count(Currency::checkPaymentCurrencies($this->id)))
+		if (!is_array(Currency::checkPaymentCurrencies($this->id)))
 			$this->warning = $this->l('No currency has been set for this module.');
 
 		$this->extra_mail_vars = array(
